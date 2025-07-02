@@ -1,1 +1,169 @@
-<h1>hardware</h1>
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hardware - TechWorld</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 5rem auto; /* Increased top margin */
+            padding: 0 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .componente {
+            margin-bottom: 4rem;
+            padding: 2.5rem; /* Increased padding */
+            border-bottom: 1px solid #eee;
+        }
+
+        .componente:last-child {
+            border-bottom: none; /* No border for the last component */
+        }
+
+        .componente h2 {
+            font-size: 2.2rem; /* Increased font size */
+            margin-bottom: 1.5rem; /* Increased bottom margin */
+            color: #2980b9;
+            border-bottom: 3px solid #3498db; /* Thicker border */
+            display: inline-block;
+            padding-bottom: 0.5rem; /* Added padding to border */
+        }
+
+        .componente img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.5rem auto; /* Increased margin */
+            border-radius: 12px; /* Slightly more rounded */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); /* More pronounced shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        .componente img:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Darker shadow on hover */
+        }
+
+        .descricao {
+            background-color: #fcfcfc; /* Lighter background */
+            padding: 1.8rem; /* Increased padding */
+            border-radius: 12px; /* Slightly more rounded */
+            font-size: 1.15rem; /* Slightly larger font */
+            color: #333;
+            margin-top: 1.5rem; /* Increased margin */
+            line-height: 1.7; /* Better readability */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Softer shadow */
+        }
+
+        footer {
+            background-color: #1a252f;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem; /* Increased top margin */
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Componentes de Hardware</h1>
+        <p>Explore as partes fundamentais de um computador</p>
+    </header>
+
+    <section>
+
+        <div class="componente">
+            <h2>Processador (CPU)</h2>
+            <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwxNXx8Y3B1fGVufDB8fHx8MTcyMDA1MTYxOXww&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de CPU">
+            <div class="descricao">
+                O **processador**, ou **CPU** (Unidade Central de Processamento), é o cérebro do computador. Ele executa instruções e processa dados em alta velocidade. Marcas populares incluem **Intel** e **AMD**, que competem para oferecer o melhor desempenho. Sua função principal é realizar cálculos complexos e controlar todas as operações do sistema, sendo crucial para a fluidez do seu PC.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>Memória RAM</h2>
+            <img src="https://images.unsplash.com/photo-1593642532454-e138e28d799f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwyMHx8cmFtJTIwbWVtb3J5fGVufDB8fHx8MTcyMDA1MTg0OHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de RAM">
+            <div class="descricao">
+                A **memória RAM** (Memória de Acesso Aleatório) armazena dados temporários que o processador precisa acessar rapidamente. Tipos comuns são **DDR4** e **DDR5**, cada vez mais velozes. Mais RAM permite executar mais programas simultaneamente sem lentidão. A capacidade ideal depende do uso, mas **16GB** ou mais é fortemente recomendado para a maioria dos usuários hoje em dia.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>Placa-Mãe</h2>
+            <img src="https://images.unsplash.com/photo-1607599298492-261546949f2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwxNnx8bW90aGVyYm9hcmR8ZW5ufDB8fHx8MTcyMDA1MTk5NHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de Placa-Mãe">
+            <div class="descricao">
+                A **placa-mãe** é a espinha dorsal do seu computador, conectando todos os componentes principais, como CPU, RAM, dispositivos de armazenamento e placas de expansão. Existem vários tamanhos, como **ATX** e **microATX**, que influenciam o tamanho do gabinete. O **chipset** na placa-mãe define seus recursos e compatibilidade com outros hardwares, e há diversos slots para futuras expansões.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>HD e SSD</h2>
+            <img src="https://images.unsplash.com/photo-1563298721-e37c7849d0e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwxMnx8c3NkJTJDaGQlMjBkcml2ZXxlbnwwfHx8fDE3MjAwNTIxNjJ8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de SSD">
+            <div class="descricao">
+                **HD** (disco rígido) e **SSD** (unidade de estado sólido) são os principais dispositivos de armazenamento de dados. O **SSD** é significativamente mais rápido e resistente a choques, por não possuir partes móveis, tornando a inicialização do sistema e o carregamento de programas quase instantâneos. O **HD** ainda oferece maior capacidade por um preço menor, ideal para armazenamento de arquivos grandes, mas o SSD garante uma experiência de uso muito superior.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>Placa de Vídeo (GPU)</h2>
+            <img src="https://images.unsplash.com/photo-1587840153835-3b1a8d43d3d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwzMHx8Z3B1fGVufDB8fHx8MTcyMDA1MjI2Mnww&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de GPU">
+            <div class="descricao">
+                A **placa de vídeo**, ou **GPU** (Unidade de Processamento Gráfico), é vital para quem trabalha com gráficos e imagens complexas. Ela processa as informações visuais, renderizando-as para o seu monitor. Marcas líderes como **NVIDIA** e **AMD** oferecem GPUs com memória dedicada (VRAM) para alta performance. É um componente essencial para jogos modernos, edição de vídeo profissional e design gráfico.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>Fonte de Alimentação</h2>
+            <img src="https://images.unsplash.com/photo-1629815041416-56321946399c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwxOXx8cGNlJTIwcG93ZXIlMjBzdXBwbHl8ZW58MHx8fHwxNzIwMDUyMzY3fDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de Fonte de Alimentação">
+            <div class="descricao">
+                A **fonte de alimentação** converte a energia elétrica da tomada para os níveis de voltagem corretos, alimentando todos os componentes internos do seu computador. Sua potência é medida em **watts (W)**, e é crucial escolher uma fonte com potência adequada para seus componentes. Fontes com certificação **80 Plus** são mais eficientes, economizando energia e gerando menos calor. Modelos modulares facilitam a organização dos cabos, melhorando o fluxo de ar dentro do gabinete.
+            </div>
+        </div>
+
+        <div class="componente">
+            <h2>Gabinete</h2>
+            <img src="https://images.unsplash.com/photo-1616781442111-2e67303e3549?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODUwMjV8MHwxfHNlYXJjaHwxMHx8cHglMjBjYXNlfGVufDB8fHx8MTcyMDA1MjUyNXww&ixlib=rb-4.0.3&q=80&w=1080" alt="Imagem real de Gabinete">
+            <div class="descricao">
+                O **gabinete** é mais do que apenas a "caixa" do computador; ele abriga e protege todos os componentes internos. Existem diversos tamanhos (full-tower, mid-tower, mini-ITX) e estilos, desde os mais discretos aos com iluminação RGB. Um bom gabinete deve oferecer excelente **fluxo de ar (airflow)** para manter os componentes resfriados, facilitar a organização dos cabos e permitir futuras expansões.
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        &copy; 2024 TechWorld. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
