@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introdução ao Python</title>
+  <style>
+    :root {
+      --cor-principal: #2c3e50;
+      --cor-secundaria: #3498db;
+      --cor-destaque: #e74c3c;
+      --cor-clara: #ecf0f1;
+      --cor-escura: #1a252f;
+      --cor-texto: #333;
+      --cor-sombra: rgba(0, 0, 0, 0.1);
+      --transicao-padrao: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--cor-clara);
+      color: var(--cor-texto);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #e0e0e0;
+    }
+
+    .conteudo {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: var(--cor-principal);
+      margin-bottom: 1rem;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 1rem auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px var(--cor-sombra);
+    }
+
+    .codigo-bloco {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      border-left: 5px solid var(--cor-secundaria);
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .exemplo {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px var(--cor-sombra);
+      margin-bottom: 2rem;
+    }
+
+    .exemplo h3 {
+      margin-top: 0;
+      color: var(--cor-secundaria);
+    }
+
+    footer {
+      background-color: var(--cor-escura);
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Introdução ao Python</h1>
+    <p>Simples. Poderoso. Ideal para quem está começando — e para quem já domina o mundo da programação.</p>
+  </header>
+
+  <div class="conteudo">
+
+    <section>
+      <h2>O que é Python?</h2>
+      <p>
+        Python é uma linguagem de programação moderna, fácil de aprender e extremamente poderosa. Seu código é limpo, direto e muito próximo da linguagem humana — o que a torna ideal para iniciantes e ao mesmo tempo poderosa o suficiente para aplicações avançadas.
+      </p>
+    </section>
+
+    <section>
+      <h2>Quem criou o Python?</h2>
+      <p>
+        Python foi criado por <strong>Guido van Rossum</strong> no final da década de 1980. A primeira versão foi lançada em 1991 com o objetivo de ser uma linguagem simples, intuitiva e poderosa.
+      </p>
+      <p>
+        Desde então, Python se tornou uma das linguagens mais populares do mundo, sendo usada em inteligência artificial, análise de dados, automação, web, games, robótica e muito mais.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Guido_van_Rossum_%28cropped%29.jpg" alt="Guido van Rossum - Criador do Python" width="300">
+    </section>
+
+    <section>
+      <h2>Exemplos de Python na prática</h2>
+
+      <div class="exemplo">
+        <h3>1. Exibir uma mensagem</h3>
+        <p><strong>Função `print()`:</strong> usada para exibir mensagens na tela.</p>
+        <div class="codigo-bloco">
+print("Olá, mundo!")
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>2. Variáveis e tipos</h3>
+        <p>Python detecta automaticamente o tipo da variável com base no valor atribuído.</p>
+        <div class="codigo-bloco">
+nome = "Joana"
+idade = 30
+altura = 1.68
+print(nome, idade, altura)
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>3. Condições (if / else)</h3>
+        <p>Use `if` para verificar condições. O `else` executa o código alternativo.</p>
+        <div class="codigo-bloco">
+nota = 7
+if nota >= 6:
+    print("Aprovado")
+else:
+    print("Reprovado")
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>4. Laço de repetição (for)</h3>
+        <p>Use `for` para repetir algo várias vezes.</p>
+        <div class="codigo-bloco">
+for i in range(1, 6):
+    print(f"Passo {i}")
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>5. Listas e iteração</h3>
+        <p>Listas armazenam coleções de dados, como vários nomes.</p>
+        <div class="codigo-bloco">
+nomes = ["Ana", "Carlos", "Rafa"]
+for nome in nomes:
+    print("Olá", nome)
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>6. Criando funções</h3>
+        <p>Funções são blocos de código reutilizáveis.</p>
+        <div class="codigo-bloco">
+def saudacao(nome):
+    print(f"Bem-vindo, {nome}!")
+
+saudacao("Lucas")
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>7. Dicionários</h3>
+        <p>Dicionários armazenam pares chave-valor.</p>
+        <div class="codigo-bloco">
+pessoa = {"nome": "Marcos", "idade": 22}
+print(pessoa["nome"])
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <h3>8. Orientação a Objetos (POO)</h3>
+        <p>Classes representam modelos de objetos no mundo real.</p>
+        <div class="codigo-bloco">
+class Pessoa:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def falar(self):
+        print("Olá, meu nome é", self.nome)
+
+p = Pessoa("Gabriel")
+p.falar()
+        </div>
+      </div>
+
+    </section>
+
+    <section>
+      <h2>Conclusão</h2>
+      <p>
+        Python não é apenas uma linguagem para aprender: é uma ferramenta poderosa usada por empresas, universidades e governos. Simples para começar, forte para crescer. Agora que você viu os conceitos básicos, está pronto para escrever seus próprios programas e resolver problemas reais com código.
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2025 - Página dedicada ao aprendizado de Python. Criado por Seu Nome. | Contato: seuemail@email.com
+  </footer>
+
+</body>
+</html>
