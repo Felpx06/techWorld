@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>🐍 Snake Game Neon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle at center, #0f0f0f, #000000);
+      color: #00ff99;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 20px 0 10px;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    canvas {
+      background-color: #111;
+      border: 4px solid #00ff99;
+      box-shadow: 0 0 20px #00ff99;
+      margin-top: 10px;
+    }
+
+    #score {
+      font-size: 16px;
+      margin-top: 12px;
+      color: #00ffaa;
+      text-shadow: 0 0 5px #00ffaa;
+    }
+
+    #gameOverOverlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      color: #ff4d4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      flex-direction: column;
+      font-family: 'Press Start 2P', cursive;
+      z-index: 2;
+      display: none;
+    }
+
+    #gameOverOverlay button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-family: 'Press Start 2P', cursive;
+      background: #00ff99;
+      border: none;
+      color: #000;
+      cursor: pointer;
+      font-size: 12px;
+      box-shadow: 0 0 10px #00ff99;
+    }
+
+    #gameWrapper {
+      position: relative;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐍 Snake Neon</h1>
+  <div id="gameWrapper">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="gameOverOverlay">
+      <div>💀 Fim de jogo!</div>
+      <div id="finalScore"></div>
+      <button onclick="restartGame()">Jogar novamente</button>
+    </div>
+  </div>
+  <p id="score">Pontos: 0</p>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('gameOverOverlay');
+    const finalScoreText = document.getElementById('finalScore');
+
+    const box = 20;
+    const canvasSize = 400;
+    let score, snake, food, direction, game;
+
+    function init() {
+      score = 0;
+      direction = null;
+      snake = [{ x: 9 * box, y: 9 * box }];
+      food = {
+        x: Math.floor(Math.random() * (canvasSize / box)) * box,
+        y: Math.floor(Math.random() * (canvasSize / box)) * box
+      };
+      document.getElementById('score').textContent = "Pontos: " + score;
+      clearInterval(game);
+      game = setInterval(draw, 120);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+      if (e.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+      if (e.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+      if (e.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
+    });
+
+    function draw() {
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvasSize, canvasSize);
+
+      for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = i === 0 ? '#00ff99' : '#007755';
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+      }
+
+      ctx.fillStyle = '#ff0066';
+      ctx.fillRect(food.x, food.y, box, box);
+
+      let head = { x: snake[0].x, y: snake[0].y };
+
+      if (direction === 'LEFT') head.x -= box;
+      if (direction === 'UP') head.y -= box;
+      if (direction === 'RIGHT') head.x += box;
+      if (direction === 'DOWN') head.y += box;
+
+      if (
+        head.x < 0 || head.x >= canvasSize ||
+        head.y < 0 || head.y >= canvasSize ||
+        collision(head, snake)
+      ) {
+        clearInterval(game);
+        finalScoreText.textContent = "Pontuação final: " + score;
+        overlay.style.display = "flex";
+        return;
+      }
+
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        score++;
+        document.getElementById('score').textContent = "Pontos: " + score;
+        food = {
+          x: Math.floor(Math.random() * (canvasSize / box)) * box,
+          y: Math.floor(Math.random() * (canvasSize / box)) * box
+        };
+      } else {
+        snake.pop();
+      }
+    }
+
+    function collision(head, body) {
+      for (let i = 1; i < body.length; i++) {
+        if (head.x === body[i].x && head.y === body[i].y) return true;
+      }
+      return false;
+    }
+
+    function restartGame() {
+      overlay.style.display = "none";
+      init();
+    }
+
+    init();
+  </script>
+</body>
+</html>
