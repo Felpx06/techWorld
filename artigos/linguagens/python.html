@@ -7,7 +7,7 @@
   <style>
     :root {
       --cor-principal: #306998;
-      --cor-secundaria: #ffd43b;
+      --cor-secundaria: #306998;
       --cor-destaque: #ffe873;
       --cor-clara: #f9f9f9;
       --cor-escura: #1a1a1a;
@@ -64,7 +64,7 @@
       text-decoration: none;
       font-size: 1.1rem;
       position: relative;
-      transition: color 0.3s ease;
+      transition: color var(--transicao-padrao);
     }
 
     .navegacao a::after {
@@ -74,12 +74,12 @@
       bottom: -5px;
       width: 0%;
       height: 2px;
-      background-color: #306998;
-      transition: width 0.3s ease;
+      background-color: var(--cor-secundaria);
+      transition: width var(--transicao-padrao);
     }
 
     .navegacao a:hover {
-      color: #306998;
+      color: var(--cor-secundaria);
     }
 
     .navegacao a:hover::after {
@@ -92,7 +92,21 @@
       padding: 2rem;
       background-color: rgba(255,255,255,0.95);
       border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px var(--cor-sombra);
+    }
+
+    .secao {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .secao.ativa {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     section {
@@ -106,7 +120,7 @@
 
     .codigo-bloco {
       background-color: #1e1e1e;
-      color: #ffd43b;
+      color: #f9f9f9;
       padding: 1rem;
       border-left: 5px solid var(--cor-secundaria);
       font-family: Consolas, monospace;
@@ -168,40 +182,78 @@
 <body>
 
   <header>
-    <h1>Curso Completo de Python</h1>
-    <p>Aprenda a linguagem mais popular do mundo desde os primeiros passos até os conceitos avançados.</p>
+    <h1 style="color: #306998;">Curso Completo de Python</h1>
+    <p>Aprenda Python do básico ao avançado com um conteúdo didático e moderno.</p>
     <nav class="navegacao">
       <ul>
-        <li><a href="#historia">História</a></li>
-        <li><a href="#sintaxe">Sintaxe</a></li>
-        <li><a href="#conceitos">Conceitos</a></li>
-        <li><a href="#exemplos">Exemplos</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#avancado">Avançado</a></li>
+        <li><a href="#" data-section="historia">História</a></li>
+        <li><a href="#" data-section="sintaxe">Sintaxe</a></li>
+        <li><a href="#" data-section="conceitos">Conceitos</a></li>
+        <li><a href="#" data-section="exemplos">Exemplos</a></li>
+        <li><a href="#" data-section="roadmap">Roadmap</a></li>
+        <li><a href="#" data-section="avancado">Avançado</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="conteudo">
-    <section id="historia">
-      <h2>História do Python</h2>
-      <p>Python é uma linguagem de programação de alto nível criada por <strong>Guido van Rossum</strong> e lançada oficialmente em 1991. Seu desenvolvimento teve início no final dos anos 1980, nos Países Baixos, como um projeto de hobby durante o Natal, enquanto Guido trabalhava no Centrum Wiskunde & Informatica (CWI), em Amsterdã. O objetivo inicial era criar uma linguagem interpretada, de fácil leitura, com sintaxe clara e simples, baseada na linguagem ABC, mas corrigindo algumas de suas limitações.</p>
+  <main class="conteudo">
 
-      <p>O nome "Python" não tem relação com o animal. Guido era fã do grupo britânico de comédia "Monty Python", e escolheu o nome justamente por querer algo curto, único e um pouco misterioso. Isso reflete o espírito da linguagem: divertida, acessível e poderosa.</p>
+<!----------------------------------------------------------------------------- HISTORIA -------------------------------------------------------------------------------------------->
 
-      <p>Ao longo dos anos, Python cresceu rapidamente em popularidade, especialmente por sua simplicidade e versatilidade. A linguagem foi adotada por diversas comunidades — desde cientistas de dados até desenvolvedores web, engenheiros de software, pesquisadores de inteligência artificial e professores.</p>
+    <section id="historia" class="secao ativa">
+      
+  <h2>História do Python</h2>
 
-      <p>A grande virada ocorreu com o lançamento da versão <strong>Python 2.0</strong> no ano 2000, que trouxe importantes funcionalidades como coleta de lixo automática e suporte completo a Unicode. No entanto, ao longo do tempo, ficou evidente a necessidade de uma nova versão com melhorias estruturais. Assim nasceu o <strong>Python 3</strong>, lançado em 2008, que quebrou compatibilidade com versões anteriores, mas estabeleceu bases sólidas para o futuro.</p>
+  <p>
+    A história do Python começa com um homem chamado <strong>Guido van Rossum</strong>, um programador holandês que, no final da década de 1980, decidiu criar uma linguagem de programação durante seu tempo livre no feriado de Natal. Guido trabalhava no <em>Centrum Wiskunde & Informatica</em> (CWI), na Holanda, e desejava desenvolver uma linguagem que fosse ao mesmo tempo poderosa e simples, algo que pudesse ser lido quase como o inglês comum, sem a complexidade de outras linguagens populares da época.
+  </p>
 
-      <p>Hoje, Python é considerado uma das linguagens mais importantes do mundo. Está presente em projetos de grande escala como YouTube, Instagram, Spotify, Google, NASA, e até mesmo em automação de sistemas operacionais e robótica.</p>
+  <p>
+    O nome “Python” não veio de uma cobra, como muitos pensam, mas sim do grupo de comédia britânico <strong>Monty Python</strong>. Guido era fã do humor irreverente e fora do comum do grupo, e queria um nome curto, memorável e que remetesse a algo divertido — o que diz muito sobre o espírito da linguagem.
+  </p>
 
-      <img src="https://pbs.twimg.com/profile_images/424495004/GuidoAvatar_400x400.jpg" alt="Guido van Rossum - Criador do Python">
+  <img src="img/GuidoAvatar_400x400.jpg" alt="Guido van Rossum - Criador do Python" width="300">
+
+  <p>
+    Lançado oficialmente em 1991, o Python nasceu com uma missão clara: tornar a programação mais acessível e menos burocrática. Guido queria que programadores gastassem mais tempo pensando em lógica e resolução de problemas, e menos tempo escrevendo sintaxe desnecessária. Com uma sintaxe limpa e intuitiva, Python rapidamente chamou atenção, mesmo em seus primeiros dias. Era uma lufada de ar fresco em um ambiente dominado por linguagens complexas e pouco amigáveis.
+  </p>
+
+  <p>
+    Nos anos 2000, a comunidade cresceu de forma explosiva. A versão 2.0 do Python trouxe novidades como coleta de lixo automatizada e melhor suporte a caracteres internacionais. No entanto, o maior salto veio com a <strong>versão 3.0</strong>, lançada em 2008, que trouxe uma reformulação profunda da linguagem — quebrando compatibilidade com versões antigas, mas oferecendo uma base sólida para o futuro.
+  </p>
+
+  <p>
+    Python deixou de ser apenas uma linguagem "fácil para iniciantes" e se tornou uma das ferramentas mais poderosas do mundo da tecnologia. Hoje, é usada nas mais diversas áreas: de <strong>inteligência artificial e ciência de dados</strong> a <strong>desenvolvimento web, automação de sistemas, robótica, jogos, scripts de servidores,</strong> e até em áreas artísticas, como <strong>geração de imagens, música e conteúdo interativo</strong>.
+  </p>
+
+  <p>
+    E não são apenas os iniciantes que se apaixonam por Python. Empresas como <strong>Google</strong>, <strong>Instagram</strong>, <strong>Spotify</strong>, <strong>Netflix</strong>, <strong>Dropbox</strong> e até a <strong>NASA</strong> utilizam a linguagem em seus sistemas. Python está por trás de serviços que você usa todos os dias — e possivelmente nem sabia.
+  </p>
+
+  <p>
+    Muitos profissionais encontraram no Python a oportunidade de mudar de vida. <strong>Angela Yu</strong>, por exemplo, era médica antes de se tornar uma das professoras mais conhecidas da internet em cursos de Python e desenvolvimento. <strong>Adrian Rosebrock</strong>, autor do PyImageSearch, começou estudando Python por conta própria e hoje é referência mundial em visão computacional. Python é um trampolim — seja para mudar de carreira, automatizar tarefas no seu trabalho, ou até construir algo do zero.
+  </p>
+
+  <p>
+    A comunidade é uma das mais acolhedoras do mundo da tecnologia. Fóruns, grupos, eventos, cursos gratuitos e uma documentação clara fazem com que o aprendizado seja uma experiência acessível e inclusiva. A linguagem é usada em cursos introdutórios das maiores universidades do planeta, como MIT, Stanford, Harvard e USP.
+  </p>
+
+  <p>
+    E se você está aqui, lendo este conteúdo, é porque decidiu começar — e isso já é um passo enorme. Python é mais do que um código entre parênteses. É um convite a resolver problemas, automatizar ideias, construir soluções e entender como o mundo digital funciona por dentro. Você está no caminho certo. E acredite: daqui a algum tempo, será você o exemplo de quem venceu com Python.
+  </p>
+
     </section>
 
-    <!-- As outras seções (Sintaxe, Conceitos, Exemplos, Roadmap, Avançado) serão adicionadas nas próximas partes -->
 
-    <section id="sintaxe">
-  <h2>Sintaxe do Python</h2>
+
+
+
+
+
+<!------------------------------------------------------------------------------- SINTAXE-------------------------------------------------------------------------------------------->
+
+    <section id="sintaxe" class="secao">
+      <h2>Sintaxe do Python</h2>
   <p>
     A sintaxe do Python é conhecida por ser extremamente clara, objetiva e próxima da linguagem humana.
     Essa simplicidade é intencional: o Python foi criado para ser fácil de ler e escrever, mesmo para quem nunca programou antes.
@@ -244,37 +296,6 @@ print("Linha executada")  # Comentário ao lado
       Em Python, não é necessário declarar o tipo da variável.
       O próprio interpretador entende o tipo com base no valor atribuído.
     </p>
-    <div class="codigo-bloco">
-nome = "João"       # String
-idade = 25          # Inteiro
-altura = 1.75       # Float (decimal)
-ativo = True        # Booleano
-    </div>
-    <p>
-      É possível verificar o tipo de uma variável usando a função <code>type()</code>:
-    </p>
-    <div class="codigo-bloco">
-print(type(nome))   # <class 'str'>
-print(type(idade))  # <class 'int'>
-    </div>
-  </div>
-
-  <div class="exemplo">
-    <h3>4. Entrada de dados</h3>
-    <p>
-      Para capturar valores do usuário, usamos a função <code>input()</code>. Ela sempre retorna uma string.
-    </p>
-    <div class="codigo-bloco">
-nome = input("Digite seu nome: ")
-print("Olá,", nome)
-    </div>
-    <p>
-      Se você precisar de um número, é necessário converter:
-    </p>
-    <div class="codigo-bloco">
-idade = int(input("Digite sua idade: "))
-print("Você tem", idade, "anos")
-    </div>
   </div>
 
   <div class="exemplo">
@@ -380,10 +401,15 @@ def exemplo():
 exemplo()
     </div>
   </div>
+    </section>
 
-</section>
-  
-    <section id="conceitos">
+
+
+
+
+<!--------------------------------------------------------------------------- CONCEITOS --------------------------------------------------------------------------------------------->
+
+    <section id="conceitos" class="secao">
   <h2>Conceitos Fundamentais do Python</h2>
   <p>
     Agora que você conhece a sintaxe básica, é hora de explorar os **conceitos essenciais** que definem a linguagem Python. 
@@ -475,7 +501,7 @@ def mostrar_info(**dados):
 mostrar_info(nome="Carlos", idade=28)
     </div>
   </div>
-
+  
   <div class="exemplo">
     <h3>4. Programação Orientada a Objetos (POO)</h3>
     <p>
@@ -571,10 +597,17 @@ finally:
     print("Fim do programa")
     </div>
   </div>
+    </section>
 
-</section>
-<section id="exemplos">
-  <h2>Exemplos Práticos em Python</h2>
+
+
+
+
+
+<!--------------------------------------------------------------------------- EXEMPLOS ---------------------------------------------------------------------------------------------->
+
+    <section id="exemplos" class="secao">
+      <h2>Exemplos Práticos em Python</h2>
   <p>
     A melhor forma de aprender programação é <strong>colocar a mão no código</strong>. 
     A seguir, você encontrará exemplos simples e extremamente didáticos, com explicações detalhadas. 
@@ -687,17 +720,21 @@ while True:
     </div>
 
   </div>
+    </section>
 
-</section>
 
-<section id="roadmap">
-  <h2>Roadmap de Aprendizado em Python</h2>
+
+
+<!--------------------------------------------------------------------------- ROADMAP ---------------------------------------------------------------------------------------------->
+
+    <section id="roadmap" class="secao">
+      <h2>Roadmap de Aprendizado em Python</h2>
   <p>Aprender Python é uma jornada que pode ser trilhada por qualquer pessoa — mesmo sem conhecimento prévio em programação. Abaixo, você verá um roadmap visual com as principais etapas, seguido de uma explicação detalhada do que estudar em cada fase.</p>
 
   <img src="img/ChatGPT Image 2 de jul. de 2025, 16_15_31.png" alt="Roadmap de Python para Iniciantes até Avançado">
 
   <div class="exemplo">
-    <h3>🔰 Fase 1 – Fundamentos da Programação</h3>
+    <h3> Fase 1 – Fundamentos da Programação</h3>
     <p>Nessa etapa inicial, o aluno aprenderá os conceitos mais básicos, que servem de alicerce para qualquer linguagem de programação, com foco em Python:</p>
     <ul>
       <li><strong>Instalação do Python:</strong> Instale o Python pelo site oficial e use um editor de código como VS Code ou Thonny.</li>
@@ -710,7 +747,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>🧠 Fase 2 – Controle de Fluxo</h3>
+    <h3> Fase 2 – Controle de Fluxo</h3>
     <p>Aqui o foco está em ensinar o programa a tomar decisões e repetir ações:</p>
     <ul>
       <li><strong>Condicionais:</strong> Uso de `if`, `elif` e `else` para decisões.</li>
@@ -721,7 +758,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>📦 Fase 3 – Estruturas de Dados</h3>
+    <h3> Fase 3 – Estruturas de Dados</h3>
     <p>Agora é hora de aprender como armazenar e organizar conjuntos de informações:</p>
     <ul>
       <li><strong>Listas:</strong> Sequência mutável de elementos. Métodos: `append()`, `remove()`, `sort()` etc.</li>
@@ -732,7 +769,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>🔁 Fase 4 – Funções e Módulos</h3>
+    <h3> Fase 4 – Funções e Módulos</h3>
     <p>Funções permitem dividir o código em partes reutilizáveis, melhorando organização e legibilidade:</p>
     <ul>
       <li><strong>Definindo funções:</strong> Usando `def nome_da_funcao():`.</li>
@@ -744,7 +781,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>🗂️ Fase 5 – Programação Orientada a Objetos (POO)</h3>
+    <h3> Fase 5 – Programação Orientada a Objetos (POO)</h3>
     <p>Essencial para desenvolver sistemas grandes e organizados:</p>
     <ul>
       <li><strong>Classes e Objetos:</strong> Como representar entidades do mundo real.</li>
@@ -756,7 +793,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>🌐 Fase 6 – Aplicações Práticas</h3>
+    <h3> Fase 6 – Aplicações Práticas</h3>
     <p>Hora de aplicar tudo em projetos reais:</p>
     <ul>
       <li><strong>Automação com Python:</strong> Automação de tarefas com bibliotecas como `pyautogui`, `openpyxl`, `os`, `shutil`, `smtplib` (e-mails).</li>
@@ -767,7 +804,7 @@ while True:
   </div>
 
   <div class="exemplo">
-    <h3>🚀 Fase 7 – Avançado e Especializações</h3>
+    <h3> Fase 7 – Avançado e Especializações</h3>
     <p>Depois de dominar o básico e a lógica, você pode se especializar em uma das áreas abaixo:</p>
     <ul>
       <li><strong>Desenvolvimento Web:</strong> Com frameworks como <code>Django</code> e <code>Flask</code>.</li>
@@ -777,14 +814,14 @@ while True:
       <li><strong>Automação Avançada:</strong> Bots, tarefas em servidores, scripts complexos.</li>
     </ul>
   </div>
-</section>
+    </section>
 
-<section id="avancado">
-  <h2>Conteúdo Avançado de Python</h2>
+    <section id="avancado" class="secao">
+      <h2>Conteúdo Avançado de Python</h2>
   <p>Depois de dominar os fundamentos, estruturas de dados, POO e alguns projetos, você pode se aprofundar em recursos mais avançados do Python. Essa etapa vai te preparar para escrever códigos mais performáticos, legíveis, seguros e poderosos.</p>
 
   <div class="exemplo">
-    <h3>🧩 1. Geradores e Iteradores</h3>
+    <h3> 1. Geradores e Iteradores</h3>
     <p>Python permite criar funções que geram valores sob demanda, economizando memória.</p>
     <ul>
       <li><strong>Iteradores:</strong> Objetos que implementam os métodos <code>__iter__()</code> e <code>__next__()</code>.</li>
@@ -802,7 +839,7 @@ for numero in contador():
   </div>
 
   <div class="exemplo">
-    <h3>🔄 2. Compreensões de Lista, Dicionário e Conjunto</h3>
+    <h3> 2. Compreensões de Lista, Dicionário e Conjunto</h3>
     <p>São formas elegantes e compactas de criar novas listas, dicionários ou conjuntos a partir de iteráveis.</p>
     <div class="codigo-bloco">
 # Lista tradicional
@@ -823,7 +860,7 @@ conjunto = {x for x in range(10) if x % 2 == 0}
   </div>
 
   <div class="exemplo">
-    <h3>🧵 3. Programação Assíncrona (async/await)</h3>
+    <h3> 3. Programação Assíncrona (async/await)</h3>
     <p>Útil para escrever programas que lidam com tarefas simultâneas, como chamadas de rede ou I/O intensivo.</p>
     <div class="codigo-bloco">
 import asyncio
@@ -839,7 +876,7 @@ asyncio.run(saudacao())
   </div>
 
   <div class="exemplo">
-    <h3>📦 4. Decoradores</h3>
+    <h3> 4. Decoradores</h3>
     <p>Funções que modificam o comportamento de outras funções, muito usados para adicionar funcionalidades (como autenticação, logs, cache).</p>
     <div class="codigo-bloco">
 def logar(funcao):
@@ -859,7 +896,7 @@ saudacao()
   </div>
 
   <div class="exemplo">
-    <h3>🔐 5. Tratamento Avançado de Exceções</h3>
+    <h3> 5. Tratamento Avançado de Exceções</h3>
     <p>Python permite capturar exceções específicas, usar <code>else</code> e <code>finally</code>, e criar exceções personalizadas:</p>
     <div class="codigo-bloco">
 try:
@@ -874,7 +911,7 @@ finally:
   </div>
 
   <div class="exemplo">
-    <h3>🏗️ 6. Manipulação Avançada de Arquivos</h3>
+    <h3> 6. Manipulação Avançada de Arquivos</h3>
     <p>Além de <code>open()</code>, Python possui suporte a arquivos binários, leitura de CSV, JSON e até banco de dados:</p>
     <ul>
       <li><strong>CSV:</strong> <code>import csv</code></li>
@@ -891,7 +928,7 @@ with open('arquivo.json', 'w') as arquivo:
   </div>
 
   <div class="exemplo">
-    <h3>📊 7. Bibliotecas Científicas e de Dados</h3>
+    <h3> 7. Bibliotecas Científicas e de Dados</h3>
     <p>Se você pretende seguir carreira em análise de dados, ciência de dados ou machine learning, aprenda essas:</p>
     <ul>
       <li><strong>NumPy:</strong> Matrizes e operações matemáticas rápidas.</li>
@@ -901,7 +938,7 @@ with open('arquivo.json', 'w') as arquivo:
   </div>
 
   <div class="exemplo">
-    <h3>🧠 8. Machine Learning com Python</h3>
+    <h3> 8. Machine Learning com Python</h3>
     <p>Bibliotecas para criar algoritmos inteligentes, treinar modelos e fazer previsões:</p>
     <ul>
       <li><strong>Scikit-learn:</strong> Classificação, regressão, clustering.</li>
@@ -911,7 +948,7 @@ with open('arquivo.json', 'w') as arquivo:
   </div>
 
   <div class="exemplo">
-    <h3>🕸️ 9. Desenvolvimento Web com Python</h3>
+    <h3> 9. Desenvolvimento Web com Python</h3>
     <p>Python também é excelente para criar sites, APIs e aplicações web:</p>
     <ul>
       <li><strong>Flask:</strong> Framework web minimalista.</li>
@@ -919,16 +956,51 @@ with open('arquivo.json', 'w') as arquivo:
       <li><strong>FastAPI:</strong> Framework moderno, focado em APIs rápidas com tipagem automática.</li>
     </ul>
   </div>
-</section>
+  </main>
 
-
-  </div>
+  <button class="voltar-topo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Topo ↑</button>
 
   <footer>
-    © 2025 - Curso de Python para Iniciantes. Desenvolvido por Luis Felipe.
+    <p>© 2025 - Curso Python. Desenvolvido por Você.</p>
   </footer>
 
-  <button class="voltar-topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Topo ↑</button>
+  <script>
+    const linksMenu = document.querySelectorAll('.navegacao a');
+    const secoes = document.querySelectorAll('.secao');
+
+    function esconderTodasAsSecoes() {
+      secoes.forEach(secao => {
+        secao.classList.remove('ativa');
+        secao.style.display = 'none';
+      });
+    }
+
+    function mostrarSecao(id) {
+      const secaoAlvo = document.getElementById(id);
+      if (secaoAlvo) {
+        secaoAlvo.classList.add('ativa');
+        secaoAlvo.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    linksMenu.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const idSecao = this.getAttribute('data-section');
+        esconderTodasAsSecoes();
+        mostrarSecao(idSecao);
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      esconderTodasAsSecoes();
+      const inicial = document.querySelector('.secao.ativa');
+      if (inicial) {
+        inicial.style.display = 'block';
+      }
+    });
+  </script>
 
 </body>
 </html>
