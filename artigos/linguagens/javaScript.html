@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guia Completo de JavaScript</title>
+  <title>Curso Completo de JavaScript</title>
   <style>
     :root {
-      --cor-principal: #000000;
-      --cor-secundaria: #f7df1e;
-      --cor-destaque: #ffe713;
-      --cor-clara: #f9f9f9;
+      --cor-principal: #f7df1e;
+      --cor-secundaria: #323330;
+      --cor-destaque: #fff200;
+      --cor-clara: #fdfdfd;
       --cor-escura: #1a1a1a;
-      --cor-texto: #333;
+      --cor-texto: #222;
       --cor-sombra: rgba(0, 0, 0, 0.1);
       --transicao-padrao: 0.3s ease;
     }
@@ -24,7 +24,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://images.unsplash.com/photo-1551033406-611cf9a28f5b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat fixed;
+      background: url('https://images.unsplash.com/photo-1607706189992-eae578626c2b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat fixed;
       background-color: var(--cor-clara);
       color: var(--cor-texto);
       line-height: 1.6;
@@ -64,7 +64,8 @@
       text-decoration: none;
       font-size: 1.1rem;
       position: relative;
-      transition: color 0.3s ease;
+      transition: color var(--transicao-padrao);
+      cursor: pointer;
     }
 
     .navegacao a::after {
@@ -74,39 +75,45 @@
       bottom: -5px;
       width: 0%;
       height: 2px;
-      background-color: var(--cor-secundaria);
-      transition: width 0.3s ease;
+      background-color: var(--cor-principal);
+      transition: width var(--transicao-padrao);
     }
 
-    .navegacao a:hover {
-      color: var(--cor-secundaria);
+    .navegacao a:hover,
+    .navegacao a.ativo {
+      color: var(--cor-principal);
     }
 
-    .navegacao a:hover::after {
+    .navegacao a:hover::after,
+    .navegacao a.ativo::after {
       width: 100%;
     }
 
     .conteudo {
       max-width: 1000px;
-      margin: auto;
-      padding: 2rem;
+      margin: 3rem auto;
+      padding: 2rem 2rem 4rem;
       background-color: rgba(255,255,255,0.95);
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
-    section {
-      margin-bottom: 4rem;
+    .aba {
+      display: none;
+    }
+
+    .aba.ativa {
+      display: block;
     }
 
     h2 {
-      color: var(--cor-principal);
+      color: var(--cor-secundaria);
       margin-bottom: 1rem;
     }
 
     .codigo-bloco {
       background-color: #1e1e1e;
-      color: #f7df1e;
+      color: var(--cor-principal);
       padding: 1rem;
       border-left: 5px solid var(--cor-secundaria);
       font-family: Consolas, monospace;
@@ -142,14 +149,13 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.95rem;
-      position: relative;
     }
 
     .voltar-topo {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: var(--cor-secundaria);
+      background: var(--cor-principal);
       color: #000;
       padding: 0.8rem 1rem;
       border: none;
@@ -157,87 +163,291 @@
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background 0.3s;
+      transition: background var(--transicao-padrao);
     }
 
     .voltar-topo:hover {
-      background: #ffe713;
+      background: var(--cor-destaque);
     }
-
-    .voltar-topo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--cor-secundaria);
-      color: #000;
-      padding: 0.8rem 1rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background 0.3s;
-    }
-
-    .voltar-topo:hover {
-      background: #ffe713;
-    }
-
-
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Guia Completo de JavaScript</h1>
-  <p>Explore tudo sobre a linguagem da web moderna — do início ao domínio avançado.</p>
-  <nav class="navegacao">
-    <ul>
-      <li><a href="#historia">História</a></li>
-      <li><a href="#sintaxe">Sintaxe</a></li>
-      <li><a href="#conceitos">Conceitos</a></li>
-      <li><a href="#exemplos">Exemplos</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#avancado">Avançado</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1 style="color: #fff200;">Curso Completo de JavaScript</h1>
+    <p>Explore a linguagem que dá vida à web — do básico ao avançado.</p>
+    <nav class="navegacao">
+      <ul>
+        <li><a class="tablink ativo" onclick="mostrarAba('historia')">História</a></li>
+        <li><a class="tablink" onclick="mostrarAba('sintaxe')">Sintaxe</a></li>
+        <li><a class="tablink" onclick="mostrarAba('conceitos')">Conceitos</a></li>
+        <li><a class="tablink" onclick="mostrarAba('exemplos')">Exemplos</a></li>
+        <li><a class="tablink" onclick="mostrarAba('dom')">Árvore DOM</a></li>
+        <li><a class="tablink" onclick="mostrarAba('roadmap')">Roadmap</a></li>
+        <li><a class="tablink" onclick="mostrarAba('avancado')">Avançado</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<div class="conteudo">
 
-  <section id="historia">
+
+<!-------------------------------------------------------------------------- historia -------------------------------------------------------------------------------------->
+
+  <div class="conteudo">
+    <div id="historia" class="aba ativa">
     <h2>História do JavaScript</h2>
-    <p>JavaScript foi criado por <strong>Brendan Eich</strong> em 1995 durante seu trabalho na Netscape. Originalmente desenvolvido em apenas 10 dias, a linguagem foi inicialmente chamada de "Mocha", depois "LiveScript" e, finalmente, JavaScript — um nome escolhido por razões de marketing para se associar à popularidade do Java, embora as duas linguagens sejam muito diferentes.</p>
-    <p>Em 1997, a linguagem foi padronizada pela ECMA International com o nome de <strong>ECMAScript</strong>. Desde então, JavaScript tem recebido atualizações regulares. Versões como ES6 (ECMAScript 2015) revolucionaram a linguagem, introduzindo recursos modernos como classes, arrow functions, promises e muito mais.</p>
-    <p>Hoje, JavaScript é a linguagem de programação mais utilizada no mundo, presente em praticamente todos os sites da web. Ela é executada no navegador, mas também pode ser usada no servidor com Node.js. É essencial para qualquer desenvolvedor web moderno.</p>
-    <img src="https://www.acidigital.com/imagespp/BrendanEich_AutorDarcyPadilla_CC-BY-SA-3_0.jpg?w=680&h=378">
-  </section>
+    <p>
+      O <strong>JavaScript</strong> surgiu em 1995 para dar vida às páginas web. Na época, a internet era estática e só exibia documentos HTML com algumas folhas de estilo CSS. A necessidade de tornar as páginas interativas levou ao nascimento dessa linguagem.
+    </p>
 
-  <section id="sintaxe">
+    <div class="exemplo">
+      <h3>Criação por Brendan Eich</h3>
+      <p>
+        Em apenas <strong>10 dias</strong>, Brendan Eich, um engenheiro da Netscape, criou a linguagem que inicialmente foi chamada de <em>Mocha</em>, depois <em>LiveScript</em> e, finalmente, <strong>JavaScript</strong>. O nome foi escolhido para aproveitar a popularidade do <em>Java</em>, mesmo as linguagens sendo muito diferentes.
+      </p>
+      <img src="img/BrendanEich_AutorDarcyPadilla_CC-BY-SA-3_0.webp" alt="Brendan Eich">
+    </div>
+
+    <div class="exemplo">
+      <h3>O Boom da Web</h3>
+      <p>
+        Na segunda metade dos anos 90, o JavaScript se tornou padrão para adicionar validações de formulários, animações simples e menus dinâmicos. Em 1997, a linguagem foi oficialmente padronizada pela <strong>ECMA</strong> (European Computer Manufacturers Association) sob o nome <code>ECMAScript</code>.
+      </p>
+      <div class="codigo-bloco">
+ECMAScript 1 — 1997: primeira padronização do JavaScript.
+ECMAScript 3 — 1999: novas funcionalidades importantes.
+ECMAScript 5 — 2009: melhorias para compatibilidade com navegadores modernos.
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Revolução com ES6 (2015)</h3>
+      <p>
+        Durante muitos anos, a linguagem evoluiu lentamente. Mas em <strong>2015</strong> veio o <strong>ECMAScript 6 (ES6)</strong>, uma atualização que modernizou o JavaScript com recursos como <code>let</code>, <code>const</code>, <code>arrow functions</code>, <code>classes</code> e muito mais. Esse marco abriu caminho para frameworks modernos como <strong>React</strong>, <strong>Vue</strong> e <strong>Angular</strong>.
+      </p>
+      <img src="https://cdn-icons-png.flaticon.com/512/919/919828.png" alt="Logo JavaScript" style="max-width:120px;">
+    </div>
+
+    <div class="exemplo">
+      <h3>JavaScript Hoje</h3>
+      <p>
+        Atualmente, o JavaScript é a linguagem mais popular do mundo para desenvolvimento web. Está presente no <strong>front-end</strong> (navegador), no <strong>back-end</strong> (com Node.js), em dispositivos móveis e até em IoT (Internet das Coisas).
+      </p>
+      <ul>
+        <li>Usado em sites como <strong>Google, Facebook, Twitter, Instagram</strong>.</li>
+        <li>Suportado em todos os navegadores modernos.</li>
+        <li>Ampla comunidade e evolução constante.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:2rem; font-style:italic; color: #666;">
+      Em mais de 25 anos, o JavaScript passou de uma linguagem “simples” para uma ferramenta essencial e poderosa, indispensável para qualquer desenvolvedor web.
+    </p>
+  </div>
+</section>
+
+    </div>
+
+
+
+    <!--------------------------------------------------------------------------  sintaxe  ------------------------------------------------------------------------------------------->
+
+    <div id="sintaxe" class="aba">
+  <div class="conteudo">
+    
     <h2>Sintaxe do JavaScript</h2>
-    <p>A sintaxe do JavaScript define como os programas devem ser escritos. É baseada em blocos de código delimitados por chaves (<code>{ }</code>), utiliza ponto e vírgula (opcional) e é sensível a maiúsculas e minúsculas.</p>
-    <ul>
-      <li><strong>Declaração de variáveis:</strong> com <code>var</code>, <code>let</code> ou <code>const</code></li>
-      <li><strong>Funções:</strong> declaradas com <code>function</code> ou usando <code>arrow functions</code></li>
-      <li><strong>Objetos e arrays:</strong> estruturas fundamentais</li>
-      <li><strong>Controle de fluxo:</strong> <code>if</code>, <code>else</code>, <code>switch</code>, <code>for</code>, <code>while</code></li>
-    </ul>
-  </section>
+    <p>JavaScript é uma linguagem leve e flexível, mas exige atenção às regras de sintaxe para que seu código seja compreendido pelo navegador. A seguir, exploramos os principais elementos da sintaxe com exemplos visuais e dicas práticas.</p>
 
-  <section id="conceitos">
-    <h2>Conceitos Fundamentais</h2>
-    <p>JavaScript é uma linguagem baseada em protótipos, orientada a objetos e dinâmica. Abaixo estão alguns dos conceitos mais importantes:</p>
-    <ul>
-      <li><strong>DOM (Document Object Model):</strong> Representa a estrutura de uma página HTML. O JavaScript pode interagir com o DOM para modificar a página em tempo real.</li>
-      <li><strong>Eventos:</strong> Permitem reagir a ações do usuário (como cliques, digitação, etc.).</li>
-      <li><strong>Funções de ordem superior:</strong> Aceitam outras funções como argumento ou retornam funções.</li>
-      <li><strong>Escopos:</strong> Escopo global e local, incluindo closures (funções que "lembram" o escopo onde foram criadas).</li>
-      <li><strong>Assincronismo:</strong> Usado com <code>setTimeout</code>, <code>Promises</code> e <code>async/await</code>.</li>
-    </ul>
-  </section>
+    <div class="exemplo">
+      <h3>Declaração de Variáveis</h3>
+      <p>Você pode declarar variáveis usando <code>var</code>, <code>let</code> ou <code>const</code>. Hoje em dia, recomenda-se <code>let</code> para variáveis que mudam e <code>const</code> para valores fixos.</p>
+      <div class="codigo-bloco">
+<pre>
+let idade = 25;       // variável que pode ser alterada
+const PI = 3.14;      // constante, não pode ser reatribuída
+var nome = "João";    // forma antiga (evite usar)</pre>
+      </div>
+    </div>
 
-  <section id="exemplos">
-    <h2>Exemplos de Código em JavaScript</h2>
+    <div class="exemplo">
+      <h3>Funções</h3>
+      <p>Funções encapsulam lógica para reutilização. Você pode criá-las de várias maneiras:</p>
+      <div class="codigo-bloco">
+<pre>
+// Função tradicional
+function saudacao(nome) {
+  return `Olá, ${nome}!`;
+}
+
+// Função anônima atribuída a uma variável
+const saudacao2 = function(nome) {
+  return `Olá, ${nome}!`;
+};
+
+// Arrow function
+const saudacao3 = nome => `Olá, ${nome}!`;
+</pre>
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Objetos e Arrays</h3>
+      <p>São estruturas fundamentais para organizar dados.</p>
+      <div class="codigo-bloco">
+<pre>
+// Array (lista)
+const frutas = ["maçã", "banana", "laranja"];
+
+// Objeto
+const pessoa = {
+  nome: "Maria",
+  idade: 30,
+  profissao: "Desenvolvedora"
+};
+</pre>
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Controle de Fluxo</h3>
+      <p>Use estruturas condicionais e loops para controlar a execução.</p>
+      <div class="codigo-bloco">
+<pre>
+// Condicional
+if (idade >= 18) {
+  console.log("Maior de idade");
+} else {
+  console.log("Menor de idade");
+}
+
+// Laço for
+for (let i = 0; i &lt; frutas.length; i++) {
+  console.log(frutas[i]);
+}
+
+// Laço while
+let contador = 0;
+while (contador &lt; 5) {
+  console.log(contador);
+  contador++;
+}
+</pre>
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Dicas Extras</h3>
+      <ul>
+        <li>JavaScript é sensível a maiúsculas e minúsculas (<code>nome</code> ≠ <code>Nome</code>).</li>
+        <li>As instruções terminam com ponto e vírgula (<code>;</code>), mas ele é opcional na maioria dos casos.</li>
+        <li>Organize seu código com indentação para facilitar a leitura.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+    </div>
+
+
+    <!--------------------------------------------------------------------------  conceitos  ----------------------------------------------------------------------------------------->
+
+
+
+    <div id="conceitos" class="aba">
+  <div class="conteudo">
+    
+    <h2>Conceitos Fundamentais do JavaScript</h2>
+    <p>
+      O JavaScript é uma linguagem dinâmica, interpretada e orientada a objetos baseada em protótipos. Para dominar a linguagem é importante entender bem seus conceitos fundamentais, pois eles são a base para escrever códigos robustos e eficientes.
+    </p>
+
+    <div class="exemplo">
+      <h3>DOM (Document Object Model)</h3>
+      <p>
+        O DOM é uma representação em árvore de todos os elementos HTML de uma página. O JavaScript interage com o DOM para manipular, criar e remover elementos em tempo real, tornando a página dinâmica.
+      </p>
+      <div class="codigo-bloco">
+document.getElementById('id')  
+document.querySelector('.classe')  
+element.innerHTML = 'Novo conteúdo';  
+element.style.color = 'blue';
+      </div>
+      <img src="https://developer.mozilla.org/en-US/docs/Glossary/DOM/dom-tree.svg" alt="Estrutura DOM">
+    </div>
+
+    <div class="exemplo">
+      <h3>Eventos</h3>
+      <p>
+        Eventos permitem reagir às ações dos usuários — como cliques, teclas pressionadas, movimentos do mouse e muito mais. Com isso, é possível criar páginas responsivas às interações.
+      </p>
+      <div class="codigo-bloco">
+element.addEventListener('click', () => {
+  alert('Você clicou!');
+});
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Funções de Ordem Superior</h3>
+      <p>
+        Funções em JavaScript são <strong>cidadãs de primeira classe</strong>: elas podem ser atribuídas a variáveis, passadas como argumentos ou retornadas por outras funções. Funções de ordem superior são aquelas que recebem ou retornam funções.
+      </p>
+      <div class="codigo-bloco">
+const numeros = [1, 2, 3];
+const dobrados = numeros.map(n => n * 2);
+console.log(dobrados); // [2, 4, 6]
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Escopos e Closures</h3>
+      <p>
+        Escopo determina onde as variáveis são visíveis no código. Em JavaScript há escopo global, de função e de bloco (<code>let</code>/<code>const</code>). <strong>Closures</strong> permitem que funções internas "lembrem" das variáveis do escopo externo mesmo após o término da execução desse escopo.
+      </p>
+      <div class="codigo-bloco">
+function criarContador() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  }
+}
+const contador = criarContador();
+console.log(contador()); // 1
+console.log(contador()); // 2
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>Assincronismo</h3>
+      <p>
+        JavaScript é single-threaded, mas pode lidar com operações assíncronas como chamadas a servidores, sem travar a página. Isso é feito usando <code>callbacks</code>, <code>Promises</code> e <code>async/await</code>.
+      </p>
+      <div class="codigo-bloco">
+async function buscarDados() {
+  const resposta = await fetch('/api/dados');
+  const dados = await resposta.json();
+  console.log(dados);
+}
+buscarDados();
+      </div>
+    </div>
+
+    <p style="margin-top:2rem; font-style:italic; color:#666;">
+      Esses conceitos são a base para evoluir e explorar todo o potencial do JavaScript em aplicações modernas.
+    </p>
+  </div>
+</section>
+
+    </div>
+
+
+
+   <!--------------------------------------------------------------------------  exemplos  ------------------------------------------------------------------------------------------->
+
+    <div id="exemplos" class="aba">
+      <div class="conteudo">
+      <h2>Exemplos de Código em JavaScript</h2>
 
     <div class="exemplo">
       <h3>1. Exibir mensagem no console</h3>
@@ -314,53 +524,260 @@ console.log(resultado);
 executar();
       </div>
     </div>
-  </section>
+    </div>
+   </div>
 
-  <section id="roadmap">
-    <h2>Roadmap para Aprender JavaScript</h2>
-    <p>Aprender JavaScript de forma eficiente requer seguir uma ordem lógica de tópicos. Veja um guia progressivo:</p>
-    <ol>
-      <li><strong>Fundamentos:</strong> variáveis, operadores, estruturas de controle, funções, escopo, arrays e objetos</li>
-      <li><strong>Manipulação do DOM:</strong> como interagir com o HTML e CSS usando JavaScript</li>
-      <li><strong>Eventos:</strong> responder a ações do usuário como cliques, teclas e movimentos do mouse</li>
-      <li><strong>Funções Avançadas:</strong> funções anônimas, callbacks, closures, funções de ordem superior</li>
-      <li><strong>Assincronismo:</strong> Promises, async/await, requisições HTTP com fetch()</li>
-      <li><strong>ES6+:</strong> arrow functions, let/const, destructuring, classes, módulos</li>
-      <li><strong>APIs do navegador:</strong> Storage, Geolocation, Canvas, Web Audio API</li>
-      <li><strong>Node.js:</strong> backend com JavaScript, npm, módulos, Express.js</li>
-      <li><strong>Frameworks Front-end:</strong> React, Vue, Angular (opcional, mas poderoso)</li>
-      <li><strong>Boas práticas:</strong> testes, debugging, versionamento (Git), padrões de projeto</li>
-    </ol>
-  </section>
+    <!--------------------------------------------------------------------------  DOM  ------------------------------------------------------------------------------------------->
 
-  <section id="avancado">
-    <h2>Tópicos Avançados</h2>
-    <p>Ao dominar os fundamentos, você pode se aprofundar nos aspectos mais complexos e poderosos da linguagem:</p>
+    <div id="dom" class="aba">
+     <section id="arvore-dom">
+  <div class="conteudo">
+    <h2>Árvore DOM</h2>
+    <p>
+      A <strong>Árvore DOM</strong> (<em>Document Object Model</em>) é uma representação hierárquica da estrutura HTML (ou XML) de uma página. Cada elemento da página é um <strong>nó</strong> (node) dessa árvore, que pode conter outros nós filhos.
+    </p>
+
+    <img src="img/arvove dom 2.jpg" alt="Exemplo de Árvore DOM">
+
+    <p>
+      Compreender a estrutura do DOM é essencial para manipular elementos dinamicamente com JavaScript. A árvore é composta por diferentes tipos de nós:
+    </p>
+
     <ul>
-      <li><strong>Programação funcional:</strong> uso de <code>map</code>, <code>filter</code>, <code>reduce</code> e imutabilidade</li>
-      <li><strong>Single Page Applications (SPAs):</strong> criar interfaces dinâmicas com React, Vue ou Angular</li>
-      <li><strong>Módulos ES:</strong> <code>import/export</code>, organização de arquivos e reuso de código</li>
-      <li><strong>Web Components:</strong> encapsulamento de HTML, CSS e JS em componentes reutilizáveis</li>
-      <li><strong>WebSockets:</strong> comunicação em tempo real com servidores</li>
-      <li><strong>Service Workers e PWA:</strong> transformar seu site em uma app instalável offline</li>
-      <li><strong>TypeScript:</strong> tipagem estática opcional para projetos JavaScript maiores</li>
+      <li><strong>Document:</strong> o nó raiz, que representa toda a página.</li>
+      <li><strong>Elementos:</strong> nós que representam tags HTML como <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>.</li>
+      <li><strong>Atributos:</strong> informações extras dos elementos, como <code>class</code> e <code>id</code>.</li>
+      <li><strong>Texto:</strong> o conteúdo textual dos elementos.</li>
+      <li><strong>Comentários:</strong> nós que representam comentários HTML.</li>
     </ul>
-  </section>
 
-  <section id="conclusao">
-    <h2>Conclusão</h2>
-    <p>JavaScript é uma linguagem essencial para qualquer desenvolvedor web. Desde simples scripts até aplicações web completas, ela permite criar experiências ricas e interativas.</p>
-    <p>Com um grande ecossistema e constante evolução, aprender JavaScript é abrir portas para o desenvolvimento front-end, back-end, mobile e até inteligência artificial com bibliotecas como TensorFlow.js.</p>
-    <p>Continue praticando, construindo projetos reais e explorando frameworks modernos para dominar essa poderosa linguagem!</p>
-  </section>
+    <div class="exemplo">
+      <h3>Exemplo: HTML e sua Árvore DOM</h3>
+      <div class="codigo-bloco">
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Título&lt;/h1&gt;
+    &lt;p&gt;Parágrafo&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+      </div>
 
-     
-</div>
+      <p>
+        Esse código é representado na árvore DOM assim:
+      </p>
 
-<footer>
-  © 2025 - Guia de Java para Desenvolvedores. Criado por Luis Felipe.
-</footer>
+      <img src="https://www.geeksforgeeks.org/wp-content/uploads/DOM.png" alt="Árvore DOM exemplo">
+    </div>
 
-<button class="voltar-topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Topo ↑</button>
+    <div class="exemplo">
+      <h3>Como acessar nós da Árvore DOM</h3>
+      <p>
+        Podemos usar os métodos do objeto <code>document</code> para acessar ou modificar qualquer nó.
+      </p>
+      <div class="codigo-bloco">
+// Selecionar elementos
+const titulo = document.querySelector('h1');
+const paragrafos = document.querySelectorAll('p');
+
+// Modificar conteúdo
+titulo.textContent = 'Novo Título';
+paragrafos[0].style.color = 'blue';
+      </div>
+    </div>
+
+    <p style="margin-top:2rem; font-style:italic; color:#666;">
+      Ao dominar a Árvore DOM, você desbloqueia o poder de transformar páginas estáticas em experiências ricas e interativas para os usuários.
+    </p>
+  </div>
+</section>
+
+    </div>
+
+
+
+    <!--------------------------------------------------------------------------  roadmap  ------------------------------------------------------------------------------------------->
+  
+    <div id="roadmap" class="aba">
+      <section id="roadmap">
+  <div class="conteudo">
+    <h2>Roadmap de Aprendizado em JavaScript</h2>
+    <p>
+      Aprender JavaScript é uma jornada que pode ser dividida em etapas. Este roadmap ajuda você a saber o que estudar em cada fase, para se tornar um desenvolvedor completo e dominar a linguagem.
+    </p>
+
+    <div class="exemplo">
+      <h3>📍 Etapa 1: Fundamentos</h3>
+      <ul>
+        <li>O que é JavaScript? Para que serve?</li>
+        <li>Sintaxe básica: variáveis, tipos de dados, operadores.</li>
+        <li>Controle de fluxo: <code>if/else</code>, <code>switch</code>, <code>for</code>, <code>while</code>.</li>
+        <li>Funções: declaração, parâmetros, retorno.</li>
+        <li>Arrays e Objetos: como armazenar e organizar dados.</li>
+      </ul>
+    </div>
+
+    <div class="exemplo">
+      <h3>📍 Etapa 2: Intermediário</h3>
+      <ul>
+        <li>Manipulação do DOM: selecionar e modificar elementos.</li>
+        <li>Eventos: <code>click</code>, <code>keydown</code>, <code>submit</code>.</li>
+        <li>Closures e escopos.</li>
+        <li>Funções de ordem superior: <code>map</code>, <code>filter</code>, <code>reduce</code>.</li>
+        <li>Conceitos de assíncrono: <code>setTimeout</code>, <code>Promise</code>, <code>async/await</code>.</li>
+      </ul>
+    </div>
+
+    <div class="exemplo">
+      <h3>📍 Etapa 3: Avançado</h3>
+      <ul>
+        <li>ES6+ e recursos modernos: <code>let</code>, <code>const</code>, arrow functions, classes, módulos.</li>
+        <li>Design Patterns básicos.</li>
+        <li>Programação Orientada a Objetos (OOP) em JavaScript.</li>
+        <li>Event Loop e como funciona o JavaScript por baixo dos panos.</li>
+        <li>Testes: unitários, integração.</li>
+      </ul>
+    </div>
+
+    <div class="exemplo">
+      <h3>📍 Etapa 4: Frameworks & Ferramentas</h3>
+      <ul>
+        <li>Introdução a bibliotecas como <strong>jQuery</strong> (opcional, legado).</li>
+        <li>Frameworks modernos: <strong>React</strong>, <strong>Vue</strong> ou <strong>Angular</strong>.</li>
+        <li>Node.js para desenvolvimento no back-end.</li>
+        <li>Ferramentas de build: <code>npm</code>, <code>webpack</code>, <code>babel</code>.</li>
+      </ul>
+    </div>
+
+    <div class="exemplo">
+      <h3>🗺️ Visual do Roadmap</h3>
+      <p>Um exemplo visual para orientar seus estudos:</p>
+      <img src="https://i.imgur.com/qZxwUtr.png" alt="JavaScript Roadmap" />
+    </div>
+
+    <p style="margin-top:2rem; font-style:italic; color:#666;">
+      Lembre-se: estudar programação é um processo contínuo. Não tenha pressa. Construa projetos reais à medida que aprende para fixar melhor o conhecimento.
+    </p>
+  </div>
+</section>
+
+    </div>
+
+
+
+    <!--------------------------------------------------------------------------  avançado  ----------------------------------------------------------------------------------------->
+
+    <div id="avancado" class="aba">
+      <section id="avancado">
+  <div class="conteudo">
+    <h2>JavaScript Avançado</h2>
+    <p>
+      Depois de dominar os conceitos básicos e intermediários do JavaScript, é hora de explorar recursos avançados da linguagem. Essas técnicas são amplamente utilizadas em aplicações modernas e exigem um entendimento profundo da linguagem e do funcionamento do navegador.
+    </p>
+
+    <div class="exemplo">
+      <h3>🔷 Event Loop & Call Stack</h3>
+      <p>
+        O JavaScript é single-threaded, mas consegue lidar com tarefas assíncronas graças ao <strong>Event Loop</strong>. Ele gerencia a execução do código síncrono (na Call Stack) e dos callbacks assíncronos (na Callback Queue).
+      </p>
+      <div class="codigo-bloco">
+console.log('Início');
+
+setTimeout(() => {
+  console.log('Assíncrono');
+}, 0);
+
+console.log('Fim');
+      </div>
+      <p>
+        Saída:
+        <code>Início</code> → <code>Fim</code> → <code>Assíncrono</code>
+      </p>
+    </div>
+
+    <div class="exemplo">
+      <h3>🔷 Programação Funcional</h3>
+      <p>
+        O JavaScript suporta paradigmas funcionais. Funções puras, imutabilidade e composição ajudam a criar código mais previsível.
+      </p>
+      <div class="codigo-bloco">
+const dobro = x => x * 2;
+const soma = (a, b) => a + b;
+
+const resultado = [1, 2, 3].map(dobro).reduce(soma);
+console.log(resultado); // 12
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>🔷 Proxies & Reflect API</h3>
+      <p>
+        Proxies permitem interceptar operações em objetos, úteis para validação, logging ou criação de APIs dinâmicas.
+      </p>
+      <div class="codigo-bloco">
+const alvo = {};
+const proxy = new Proxy(alvo, {
+  set(obj, prop, valor) {
+    console.log(`Propriedade ${prop} definida como ${valor}`);
+    obj[prop] = valor;
+  }
+});
+proxy.nome = 'JS Avançado';
+      </div>
+    </div>
+
+    <div class="exemplo">
+      <h3>🔷 Web APIs</h3>
+      <p>
+        O JavaScript no navegador pode interagir com várias Web APIs para funcionalidades mais complexas:
+      </p>
+      <ul>
+        <li><strong>Canvas API:</strong> desenhar gráficos.</li>
+        <li><strong>Web Storage:</strong> armazenar dados no cliente.</li>
+        <li><strong>WebSockets:</strong> comunicação em tempo real.</li>
+        <li><strong>Geolocation API:</strong> obter a localização do usuário.</li>
+      </ul>
+    </div>
+
+    <div class="exemplo">
+      <h3>🔷 Performance e Boas Práticas</h3>
+      <p>
+        Em aplicações reais, a performance e a qualidade do código são fundamentais:
+      </p>
+      <ul>
+        <li>Evite <code>DOM reflows</code> desnecessários.</li>
+        <li>Minimize o uso de <code>setTimeout</code> ou <code>setInterval</code> para animações; prefira <code>requestAnimationFrame</code>.</li>
+        <li>Escreva código modular, reutilizável e bem testado.</li>
+        <li>Use ferramentas como <code>Lighthouse</code> e <code>DevTools</code> para auditorias.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:2rem; font-style:italic; color:#666;">
+      O domínio desses conceitos avançados diferencia um bom desenvolvedor de um profissional sênior. Pratique-os em projetos reais e aprofunde-se sempre!
+    </p>
+  </div>
+</section>
+
+    </div>
+
+
+  </div>
+
+  <footer>
+    © 2025 - Curso de JavaScript | Criado por Você.
+  </footer>
+
+  <button class="voltar-topo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑ Topo</button>
+
+  <script>
+    function mostrarAba(id) {
+      const abas = document.querySelectorAll('.aba');
+      const links = document.querySelectorAll('.tablink');
+      abas.forEach(aba => aba.classList.remove('ativa'));
+      links.forEach(link => link.classList.remove('ativo'));
+      document.getElementById(id).classList.add('ativa');
+      event.currentTarget.classList.add('ativo');
+    }
+  </script>
 
 </body>
+</html>
